@@ -1,15 +1,6 @@
--- =====================================================================
--- Conecta CEFET - ATUALIZAÇÃO DO BANCO (itens 8, 9 e 10)
--- Rode DEPOIS do seu script do banco (conecta_cefet). NÃO apaga nem altera
--- nenhuma tabela existente; só cria 2 tabelas novas. Pode rodar mais de uma vez.
--- (Não rode o migracao.sql junto: o seu script já contém tudo que ele cria.)
--- =====================================================================
 USE conecta_cefet;
 SET NAMES utf8mb4;
 
--- 1) Linha do tempo EDITÁVEL do projeto (ano + o que aconteceu).
---    atividade_timeline guarda só "data automática" e não tem ano editável,
---    por isso uma tabela nova; a antiga continua existindo, sem uso.
 CREATE TABLE IF NOT EXISTS atividade_historico (
     id_historico BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     id_atividade BIGINT UNSIGNED NOT NULL,
@@ -23,9 +14,6 @@ CREATE TABLE IF NOT EXISTS atividade_historico (
     INDEX idx_historico_atividade_ano (id_atividade, ano)
 ) ENGINE=InnoDB;
 
--- 2) Autoria dos eventos institucionais criados por professores
---    (evento_academico não tem coluna de autor; assim cada professor só
---    remove os eventos que ele mesmo criou).
 CREATE TABLE IF NOT EXISTS evento_autor (
     id_evento BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     id_usuario BIGINT UNSIGNED NOT NULL,
@@ -36,9 +24,7 @@ CREATE TABLE IF NOT EXISTS evento_autor (
         REFERENCES usuario (id_usuario) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- 3) (Opcional, correção) a view vw_atividade_vagas compara com 'apravado' (typo):
---    nunca casa com nada e as vagas ocupadas sempre saem 0. O código atual não usa
---    essa view, mas ela fica correta para consultas diretas.
+
 CREATE OR REPLACE VIEW vw_atividade_vagas AS
 SELECT
     a.id_atividade,
@@ -51,10 +37,6 @@ LEFT JOIN candidatura c
     AND c.status = 'aprovado'
 GROUP BY a.id_atividade, a.vagas_totais;
 
--- 4) (item 11: ADM com as funções do professor)
---    Quem cria/coordena uma atividade era obrigado a existir na tabela `professor` (FK).
---    O administrador não está nela. As FKs passam a apontar para `usuario`
---    (professores e administradores). Nenhum dado é apagado.
 ALTER TABLE atividade_academica
     DROP FOREIGN KEY fk_atividade_professor,
     ADD CONSTRAINT fk_atividade_professor FOREIGN KEY (id_professor)
