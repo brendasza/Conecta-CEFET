@@ -47,7 +47,6 @@ function gerarPdf(caminho, d) {
   });
 }
 
-// RN012: só para quem foi aprovado, e só os coordenadores do projeto emitem (RF047)
 export async function emitir(idCandidatura, idUsuario, cargaHoraria) {
   const horas = Number(cargaHoraria);
   if (!Number.isInteger(horas) || horas < 1 || horas > 2000) {
@@ -107,7 +106,6 @@ export async function emitir(idCandidatura, idUsuario, cargaHoraria) {
   return { id: String(id), cargaHoraria: horas };
 }
 
-// O próprio aluno, os coordenadores do projeto ou o administrador
 export async function caminhoParaDownload(idCertificado, usuario) {
   const cert = await CandidaturaRepository.buscarCertificado(idCertificado);
   if (!cert) throw naoEncontrado("Certificado não encontrado");
@@ -124,7 +122,6 @@ export async function caminhoParaDownload(idCertificado, usuario) {
   return { caminho, nome: `certificado-${cert.id_certificado}.pdf` };
 }
 
-// Pública: qualquer pessoa confere o código do certificado (validarAutenticidade)
 export async function validar(idCertificado) {
   const cert = await CandidaturaRepository.buscarCertificado(idCertificado);
   if (!cert) return { valido: false };
