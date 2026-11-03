@@ -6,7 +6,6 @@ import * as LogService from "./LogService.js";
 
 const TIPOS = ["semestre", "recesso"];
 
-// "2026-02-09" (input type="date") -> "2026-02-09"
 function dataSimples(valor, campo) {
   const m = String(valor ?? "").match(/^(\d{4}-\d{2}-\d{2})/);
   if (!m) throw invalido(`Informe a data de ${campo}`);
@@ -44,7 +43,7 @@ export async function salvarAno({ ano, inicioAulas, fimAulas } = {}, idAdmin = n
   if (fim < inicio) throw invalido("O fim das aulas não pode ser antes do início");
 
   await AnoLetivoRepository.salvarAno({ ano: a, inicio, fim });
-  await AdminRepository.obterOuCriarCalendario(a); // mantém o calendário do ano criado
+  await AdminRepository.obterOuCriarCalendario(a); 
   await LogService.registrar(idAdmin, "ano_letivo.salvo", "ano_letivo", a, `${inicio} a ${fim}`);
   return { ano: a };
 }
@@ -85,13 +84,12 @@ export async function excluirPeriodo(id, idAdmin = null) {
   await LogService.registrar(idAdmin, "periodo_letivo.excluido", "periodo_letivo", id);
 }
 
-// Itens do ano letivo que entram na agenda de todos (origem "periodo")
 export async function itensAgenda() {
   let dados;
   try {
     dados = await AnoLetivoRepository.listarAnos();
   } catch (erro) {
-    // migração ainda não rodada: a agenda continua funcionando sem o ano letivo
+    
     console.error("Ano letivo indisponível:", erro.message);
     return [];
   }
