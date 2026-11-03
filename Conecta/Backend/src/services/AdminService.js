@@ -7,11 +7,9 @@ import * as AnoLetivoService from "./AnoLetivoService.js";
 import * as ProjetoRepository from "../repositories/ProjetoRepository.js";
 import * as AgendaPessoalRepository from "../repositories/AgendaPessoalRepository.js";
 
-/* ---------- dashboard ---------- */
 
 export const dashboard = AdminRepository.dashboard;
 
-/* ---------- usuários ---------- */
 
 export async function listarUsuarios(filtros) {
   const linhas = await AdminRepository.listarUsuarios(filtros);
@@ -27,7 +25,6 @@ export async function listarUsuarios(filtros) {
   }));
 }
 
-// Níveis: 1 = consulta · 2 = conteúdo e cadastros · 3 = total (contas e logs)
 export async function alterarNivel(idAdmin, idUsuario, nivel) {
   const n = Number(nivel);
   if (![1, 2, 3].includes(n)) throw invalido("O nível de acesso deve ser 1, 2 ou 3");
@@ -98,7 +95,6 @@ export async function excluirNoticia(id, idAdmin = null) {
   await LogService.registrar(idAdmin, "noticia.excluida", "noticia", id);
 }
 
-/* ---------- calendário / agenda ---------- */
 
 export async function validarEvento(d = {}) {
   const titulo = textoObrigatorio(d.titulo, 150, "título");
@@ -129,7 +125,6 @@ export async function excluirEvento(id, idAdmin = null) {
   await LogService.registrar(idAdmin, "evento.excluido", "evento", id);
 }
 
-// Eventos institucionais criados pelo usuário (professores). Sem a migração, a agenda segue funcionando.
 async function eventosDoAutor(idUsuario) {
   if (!idUsuario) return new Set();
   try {
@@ -140,7 +135,6 @@ async function eventosDoAutor(idUsuario) {
   }
 }
 
-// RF044/RF045: eventos do calendário + datas importantes dos projetos
 export async function agenda(idUsuario = null) {
   const [eventos, prazos, periodos, meus] = await Promise.all([
     AdminRepository.listarEventos(),
@@ -157,10 +151,10 @@ export async function agenda(idUsuario = null) {
     inicio: paraIso(e.data_inicio),
     fim: paraIso(e.data_fim),
     origem: "calendario",
-    meu: meus.has(String(e.id_evento)), // evento criado pelo próprio professor logado
+    meu: meus.has(String(e.id_evento)), 
   }));
 
-  itens.push(...periodos); // ano letivo: início/fim das aulas, semestres e recessos
+  itens.push(...periodos); 
 
   for (const p of prazos) {
     if (p.data_inicio_inscricao) {
@@ -190,8 +184,6 @@ export async function agenda(idUsuario = null) {
   return itens.sort((a, b) => (a.inicio < b.inicio ? -1 : 1));
 }
 
-
-/* ---------- cadastros de apoio ---------- */
 
 function categoriaValida(categoria) {
   const cfg = AdminRepository.apoioConfig(categoria);
@@ -229,7 +221,6 @@ export async function renomearApoio(categoria, id, nome, idAdmin) {
   await LogService.registrar(idAdmin, `${categoria}.renomeado`, categoria, id, n);
 }
 
-// Áreas e tipos em uso por projetos não podem ser removidos (FK RESTRICT); itens sem uso saem normalmente.
 export async function excluirApoio(categoria, id, idAdmin) {
   categoriaValida(categoria);
   const usos = await AdminRepository.usosDeApoio(categoria, id);
@@ -239,7 +230,6 @@ export async function excluirApoio(categoria, id, idAdmin) {
   await LogService.registrar(idAdmin, `${categoria}.excluido`, categoria, id);
 }
 
-/* ---------- moderação de publicações e projetos ---------- */
 
 export async function listarPosts(filtros) {
   const linhas = await AdminRepository.listarPosts(filtros);
