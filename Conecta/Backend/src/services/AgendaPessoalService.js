@@ -12,7 +12,6 @@ function validar(d = {}) {
   return { titulo, descricao, inicio, fim };
 }
 
-// Lembretes do próprio aluno: não mexem no calendário oficial da instituição
 export async function listar(idUsuario) {
   const linhas = await AgendaPessoalRepository.listar(idUsuario);
   return linhas.map((l) => ({
