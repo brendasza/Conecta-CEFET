@@ -1,6 +1,5 @@
 import pool from "../config/database.js";
 
-// RNF004: registra ações relevantes. Nunca derruba a requisição se o log falhar.
 export async function registrar(idUsuario, acao, entidade = null, idEntidade = null, detalhe = null) {
   try {
     await pool.query(
