@@ -12,7 +12,6 @@ function formatar(dataMysql) {
   return `${d}/${m}/${a} às ${hora.slice(0, 5)}`;
 }
 
-// RF046: alerta (uma vez por prazo) para projetos que o usuário acompanha
 async function gerarAlertasPrazo(idUsuario) {
   const prazos = await NotificacaoRepository.prazosProximos(idUsuario);
 
