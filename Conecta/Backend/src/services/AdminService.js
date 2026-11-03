@@ -48,7 +48,6 @@ export async function definirAtivo(idAdmin, idUsuario, ativo) {
   await LogService.registrar(idAdmin, ativo ? "usuario.ativado" : "usuario.desativado", "usuario", idUsuario, usuario.email);
 }
 
-/* ---------- notícias (mural) ---------- */
 
 function paraNoticiaDTO(n) {
   return {
