@@ -12,7 +12,7 @@ import {
 } from "../utils/erros.js";
 import { texto, textoObrigatorio, dataMysql } from "../utils/texto.js";
 
-/* ---------- validação ---------- */
+
 
 function validarDados(dados = {}) {
   const titulo = textoObrigatorio(dados.nome, 150, "nome do projeto");
@@ -30,8 +30,8 @@ function validarDados(dados = {}) {
   return { titulo, objetivo, area, descricao, tags: [...tags.values()], tipoNome: dados.tipo };
 }
 
-// Inscrição (vagas, período, requisitos e critérios) é OPCIONAL: uma atividade acadêmica
-// pode existir sem abrir vagas. Sem vagas, não há inscrição (nem período).
+
+
 function validarInscricao(dados = {}) {
   const requisitos = texto(dados.requisitos, 5000, "campo de requisitos") || null;
   const criterios = texto(dados.criterios, 5000, "campo de critérios") || null;
@@ -57,7 +57,7 @@ function validarInscricao(dados = {}) {
   };
 }
 
-// o formulário de inscrição foi enviado junto? (criar aceita; atualizar só mexe se vier)
+
 const temInscricao = (d = {}) =>
   ["vagas", "inicioInscricao", "fimInscricao", "requisitos", "criterios"].some((c) => c in d);
 
@@ -67,7 +67,7 @@ async function exigirCoordenador(idProjeto, idUsuario) {
   }
 }
 
-/* ---------- projetos ---------- */
+
 
 export async function criar(idProfessor, dados = {}) {
   const v = { ...validarDados(dados), ...validarInscricao(dados) };
@@ -111,7 +111,7 @@ export async function atualizar(idProjeto, idUsuario, dados = {}) {
 
   const v = validarDados(dados);
 
-  // a inscrição só é alterada aqui se o formulário a enviou (ela tem tela própria no perfil do projeto)
+
   const inscricao = temInscricao(dados) ? validarInscricao(dados) : null;
   if (inscricao) await conferirVagas(idProjeto, inscricao.vagas_totais);
 
@@ -157,7 +157,7 @@ async function conferirVagas(idProjeto, vagas) {
   }
 }
 
-// Tela própria de inscrição no perfil do projeto: vagas, período, requisitos e critérios
+
 export async function atualizarInscricoes(idProjeto, idUsuario, dados = {}) {
   await exigirCoordenador(idProjeto, idUsuario);
 
@@ -184,7 +184,7 @@ export async function atualizarInscricoes(idProjeto, idUsuario, dados = {}) {
   return paraProjetoDTO(await ProjetoRepository.buscarPorId(idProjeto));
 }
 
-/* ---------- linha do tempo (histórico editável pelo coordenador) ---------- */
+//linha do tempooo
 
 function validarHistorico(d = {}) {
   const ano = Number(d.ano);
@@ -242,8 +242,7 @@ export async function encerrar(idProjeto, idUsuario) {
   return paraProjetoDTO(await ProjetoRepository.buscarPorId(idProjeto));
 }
 
-// "Excluir" (professor) e "Desativar" (administrador) = status cancelado: some das listas, mas
-// candidaturas e certificados ficam no histórico. O administrador pode ativar de novo (ver ativar()).
+
 export async function excluir(idProjeto, usuario) {
   const projeto = await ProjetoRepository.buscarBruto(idProjeto);
   if (!projeto || projeto.status === "cancelado") throw naoEncontrado("Projeto não encontrado");
@@ -261,7 +260,7 @@ export async function listarParaAdmin(busca) {
   return projetos.map((p) => paraProjetoDTO(p));
 }
 
-// Só o administrador: reativa uma atividade desativada
+
 export async function ativar(idProjeto, usuario) {
   if (usuario.tipo !== "administrador") throw proibido("Apenas administradores podem ativar atividades");
   const projeto = await ProjetoRepository.buscarBruto(idProjeto);
@@ -276,9 +275,9 @@ export async function listar(filtros = {}) {
   return (await ProjetoRepository.listar(filtros)).map((p) => paraProjetoDTO(p));
 }
 
-// Detalhe + se o usuário segue + a candidatura dele (se for aluno)
+
 export async function detalhe(idProjeto, usuario) {
-  // o administrador também enxerga atividades desativadas (para poder ativar de novo)
+
   const projeto = await ProjetoRepository.buscarPorId(idProjeto, usuario.tipo === "administrador");
   if (!projeto) throw naoEncontrado("Projeto não encontrado");
 
@@ -474,7 +473,6 @@ export async function buscarAlunos(termo) {
   return UsuarioRepository.buscarAlunos(t);
 }
 
-/* ---------- acompanhar (notificações do projeto) ---------- */
 
 export async function alternarSeguir(idUsuario, idProjeto) {
   const projeto = await ProjetoRepository.buscarBruto(idProjeto);
