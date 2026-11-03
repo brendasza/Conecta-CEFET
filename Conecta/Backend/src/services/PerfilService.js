@@ -16,18 +16,18 @@ export async function buscarMe(idUsuario) {
 
 function texto(valor, max) {
   const limpo = String(valor ?? "").trim();
-  return limpo.length <= max ? limpo : null; // null = passou do limite
+  return limpo.length <= max ? limpo : null; //passou do limite
 }
 
 function lista(valor, max = 30, maxItem = 80) {
-  if (valor === undefined) return undefined; // não veio: não mexe
+  if (valor === undefined) return undefined; // n veio: não mexe
   if (!Array.isArray(valor) || valor.length > max) return null;
 
   const vistos = new Map();
   for (const item of valor) {
     const nome = texto(item, maxItem);
     if (nome === null) return null;
-    if (nome) vistos.set(nome.toLowerCase(), nome); // tira repetidos (A = a)
+    if (nome) vistos.set(nome.toLowerCase(), nome); // repetido0s
   }
   return [...vistos.values()];
 }
@@ -98,9 +98,9 @@ export async function atualizarMe(idUsuario, dados = {}) {
   return buscarMe(idUsuario);
 }
 
-// Perfil público: qualquer usuário logado (aluno, professor ou administrador) pode ver o
-// perfil de qualquer pessoa. Mostra só dados públicos (nome, e-mail de contato, bio, curso...).
-// NUNCA expõe matrícula, SIAPE, CPF, senha nem dados de acesso.
+
+
+
 export async function buscarPublico(idUsuario) {
   const usuario = await UsuarioRepository.buscarPorId(idUsuario);
 
