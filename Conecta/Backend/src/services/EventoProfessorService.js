@@ -3,10 +3,6 @@ import * as AgendaPessoalRepository from "../repositories/AgendaPessoalRepositor
 import { validarEvento } from "./AdminService.js";
 import { naoEncontrado } from "../utils/erros.js";
 
-// (o log de auditoria é automático: middleware de auditoria)
-// Eventos institucionais criados por professores entram no calendário de todos
-// (mesma tabela dos eventos do ADM). Cada professor só altera/remove os que criou.
-
 async function exigirAutor(id, idUsuario) {
   if (!(await AgendaPessoalRepository.ehAutor(id, idUsuario))) {
     throw naoEncontrado("Evento não encontrado ou criado por outra pessoa");
