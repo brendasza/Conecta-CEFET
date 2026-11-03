@@ -8,12 +8,11 @@ import { invalido } from "../utils/erros.js";
 const VALIDADE_MIN = 30;
 const sha = (t) => crypto.createHash("sha256").update(t).digest("hex");
 
-// RF005 (1/2): gera um link de redefinição. Sem servidor de e-mail configurado,
-// o link é escrito no console do backend (e devolvido na resposta só fora de produção).
+
 export async function solicitar(email) {
   const resposta = { mensagem: "Se o e-mail estiver cadastrado, você receberá as instruções de redefinição." };
   const usuario = await UsuarioRepository.buscarPorEmail(String(email ?? "").trim().toLowerCase());
-  if (!usuario || !usuario.ativo) return resposta; // não revela se o e-mail existe
+  if (!usuario || !usuario.ativo) return resposta; 
 
   const token = crypto.randomBytes(32).toString("base64url");
   await pool.query("UPDATE recuperacao_senha SET usado = TRUE WHERE id_usuario = ? AND usado = FALSE", [usuario.id_usuario]);
@@ -32,7 +31,6 @@ export async function solicitar(email) {
   return resposta;
 }
 
-// RF005 (2/2): troca a senha usando o token (uso único, expira em 30 min)
 export async function redefinir(token, senha) {
   if (!token) throw invalido("Link inválido ou expirado");
   if (String(senha ?? "").length < 8) throw invalido("A senha deve ter pelo menos 8 caracteres");
