@@ -1,0 +1,389 @@
+.notificacoes-page {
+  background: #f1f4fa;
+  padding: 28px 28px 56px;
+}
+
+.notificacoes-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.notificacoes-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.notificacoes-header h1 {
+  margin: 0;
+  color: #071d3e;
+  font-size: 30px;
+}
+
+.notificacoes-header p {
+  margin: 6px 0 0;
+  color: #4f6381;
+  font-size: 17px;
+}
+
+.notificacao-ler-todas {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background: #fff;
+  color: #1748dc;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid #d5dcea;
+}
+
+.notificacao-ler-todas:hover {
+  background: #eaf0ff;
+  border-color: #b9c9f3;
+}
+
+.notificacoes-erro {
+  color: #c0392b;
+  margin: 0 0 16px;
+}
+
+.notificacoes-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ---------- abas ---------- */
+.notificacoes-abas {
+  display: flex;
+  gap: 26px;
+  border-bottom: 1px solid #dde3ef;
+  margin-bottom: 8px;
+}
+
+.notificacoes-abas button {
+  position: relative;
+  padding: 0 0 12px;
+  background: none;
+  color: #4f6381;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notificacoes-abas button span {
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 11px;
+  background: #e3e9f5;
+  color: #526785;
+  font-size: 13.5px;
+  text-align: center;
+}
+
+.notificacoes-abas button.ativa {
+  color: #071d3e;
+}
+
+.notificacoes-abas button.ativa::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #1748dc;
+}
+
+.notificacoes-abas button.ativa span {
+  background: #1748dc;
+  color: #fff;
+}
+
+/* ---------- lista agrupada por dia ---------- */
+.notificacoes-grupo {
+  margin-top: 26px;
+}
+
+.notificacoes-grupo h2 {
+  margin: 0 0 10px;
+  color: #4f6381;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.notificacoes-grupo ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 6px rgba(30, 50, 80, 0.1);
+  overflow: hidden;
+}
+
+.notificacao-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #edf0f6;
+  position: relative;
+}
+
+.notificacao-item:last-child {
+  border-bottom: none;
+}
+
+.notificacao-item.nao-lida {
+  background: #f7f9ff;
+}
+
+.notificacao-item.nao-lida::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #1748dc;
+}
+
+.notificacao-icone {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf0ff;
+  color: #1748dc;
+}
+
+.notificacao-icone svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tipo-candidatura .notificacao-icone {
+  background: #fff4dc;
+  color: #a36a00;
+}
+
+.tipo-certificado .notificacao-icone {
+  background: #e3f5ea;
+  color: #1e8449;
+}
+
+.tipo-prazo .notificacao-icone {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.tipo-publicacao .notificacao-icone {
+  background: #eceff4;
+  color: #4a5b75;
+}
+
+.notificacao-corpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0;
+  background: none;
+  text-align: left;
+}
+
+.notificacao-meta {
+  color: #4f6381;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.notificacao-meta i {
+  margin: 0 6px;
+  font-style: normal;
+  color: #b3bfd2;
+}
+
+.notificacao-texto {
+  color: #102a52;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.nao-lida .notificacao-texto {
+  color: #071d3e;
+  font-weight: 600;
+}
+
+.notificacao-corpo:hover .notificacao-texto {
+  color: #1748dc;
+}
+
+.notificacao-lida {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notificacao-lida span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  background: #1748dc;
+}
+
+.notificacao-lida:hover {
+  background: #e3ebfd;
+}
+
+.notificacao-lida:hover span {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px #1748dc;
+}
+
+/* ---------- estado vazio ---------- */
+.notificacoes-vazio {
+  color: #4f6381;
+  margin: 26px 0;
+}
+
+.notificacoes-vazio.caixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 46px 20px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 6px rgba(30, 50, 80, 0.1);
+  text-align: center;
+}
+
+.notificacoes-vazio.caixa svg {
+  width: 30px;
+  height: 30px;
+  color: #9fb0cc;
+}
+
+.notificacoes-vazio.caixa strong {
+  color: #071d3e;
+  font-size: 18px;
+}
+
+/* ---------- projetos acompanhados ---------- */
+.notificacoes-lateral {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 2px 6px rgba(30, 50, 80, 0.1);
+  position: sticky;
+  top: 20px;
+}
+
+.notificacoes-lateral h2 {
+  margin: 0 0 6px;
+  color: #071d3e;
+  font-size: 18px;
+}
+
+.notificacoes-lateral > p {
+  margin: 0 0 14px;
+  color: #4f6381;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.notificacoes-lateral-vazio {
+  padding-top: 12px;
+  border-top: 1px solid #edf0f6;
+}
+
+.notificacoes-lateral ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notificacoes-lateral li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 13px 0;
+  border-top: 1px solid #edf0f6;
+}
+
+.seguido-nome {
+  color: #071d3e;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.seguido-nome:hover {
+  color: #1748dc;
+}
+
+.seguido-info {
+  color: #4f6381;
+  font-size: 14.5px;
+}
+
+.seguido-desativar {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 0;
+  background: none;
+  color: #4f6381;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.seguido-desativar:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 950px) {
+  .notificacoes-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .notificacoes-lateral {
+    position: static;
+  }
+}
+
+@media (max-width: 650px) {
+  .notificacoes-page {
+    padding: 22px 16px 50px;
+  }
+
+  .notificacao-item {
+    padding: 14px;
+    gap: 12px;
+  }
+}

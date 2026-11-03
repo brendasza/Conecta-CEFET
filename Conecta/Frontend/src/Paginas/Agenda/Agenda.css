@@ -1,0 +1,193 @@
+.agenda-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+.agenda-grade {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.agenda-cab {
+  text-align: center;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #4f6381;
+  padding: 4px 0;
+}
+
+.agenda-dia {
+  min-height: 62px;
+  border-radius: 12px;
+  background: #f6f8fc;
+  color: #102a52;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.agenda-dia:hover {
+  background: #e7edf9;
+}
+
+.agenda-dia.hoje {
+  border: 2px solid #1748dc;
+}
+
+.agenda-dia.selecionado {
+  background: #1748dc;
+  color: #fff;
+}
+
+.agenda-pontos {
+  display: flex;
+  gap: 3px;
+}
+
+.agenda-pontos i,
+.agenda-legenda {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+}
+
+/* cores dinâmicas por tipo de item (antes havia um verde fixo para todo o calendário) */
+.agenda-pontos i.calendario,
+.agenda-legenda.calendario {
+  background: #6d3fc4;
+}
+
+.agenda-pontos i.periodo.aulas,
+.agenda-legenda.periodo.aulas {
+  background: #1748dc;
+}
+
+.agenda-pontos i.periodo.semestre,
+.agenda-legenda.periodo.semestre {
+  background: #0f9aa8;
+}
+
+.agenda-pontos i.periodo.recesso,
+.agenda-legenda.periodo.recesso {
+  background: #c0392b;
+}
+
+.agenda-pontos i.pessoal,
+.agenda-legenda.pessoal {
+  background: #d6409f;
+}
+
+.agenda-pontos i.projeto,
+.agenda-legenda.projeto {
+  background: #e08a00;
+}
+
+.agenda-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f6f8fc;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #071d3e;
+}
+
+.agenda-etiqueta {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.agenda-etiqueta.calendario {
+  color: #6d3fc4;
+}
+
+.agenda-etiqueta.periodo.aulas {
+  color: #1748dc;
+}
+
+.agenda-etiqueta.periodo.semestre {
+  color: #0f9aa8;
+}
+
+.agenda-etiqueta.periodo.recesso {
+  color: #c0392b;
+}
+
+.agenda-etiqueta.pessoal {
+  color: #d6409f;
+}
+
+.agenda-etiqueta.projeto {
+  color: #e08a00;
+}
+
+@media (max-width: 900px) {
+  .agenda-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.agenda-legendas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.agenda-legendas span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.agenda-lembrete {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e7edf9;
+}
+
+.agenda-remover {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+  .agenda-grade {
+    gap: 3px;
+  }
+
+  .agenda-dia {
+    min-height: 46px;
+    gap: 3px;
+    padding: 6px 0;
+    font-size: 14.5px;
+  }
+
+  .agenda-cab {
+    font-size: 13px;
+  }
+}
+
+.agenda-ate {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}

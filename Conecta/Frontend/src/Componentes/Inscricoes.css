@@ -1,0 +1,91 @@
+.inscricoes-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.inscricoes-topo h2 {
+  margin: 0;
+}
+
+.inscricoes-resumo {
+  margin: 10px 0 0;
+  color: #175cbd;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.inscricoes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.inscricoes-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #16264d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.inscricoes-form input,
+.inscricoes-form textarea {
+  border: 1px solid #d7e0f2;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.inscricoes-linha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.inscricoes-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* linha do tempo editável */
+
+.historico-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 18px;
+}
+
+.historico-form input {
+  border: 1px solid #d7e0f2;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.historico-ano {
+  width: 90px;
+}
+
+.historico-titulo {
+  flex: 2 1 220px;
+  min-width: 0;
+}
+
+.historico-descricao {
+  flex: 3 1 240px;
+  min-width: 0;
+}
+
+.historico-acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}

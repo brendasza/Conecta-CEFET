@@ -1,0 +1,162 @@
+.editar-perfil-page {
+  min-height: 100vh;
+  padding: 40px 20px 80px;
+
+  display: flex;
+  justify-content: center;
+
+  background:
+    radial-gradient(1100px 420px at 12% -8%, #5e94ff 0%, transparent 80%),
+    #99b7fd;
+
+  font-family: "Segoe UI", ui-sans-serif, system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+.editar-perfil-card {
+  width: 100%;
+  max-width: 680px;
+  height: fit-content;
+
+  background: #ffffff;
+  border: 1px solid #e7ecf6;
+  border-radius: 24px;
+  padding: 34px 38px 40px;
+
+  box-shadow: 0 1px 2px rgba(19, 37, 68, 0.04), 0 18px 40px -22px rgba(19, 37, 68, 0.28);
+}
+
+.editar-perfil-card h1 {
+  margin: 0 0 6px;
+  color: #16264d;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.editar-perfil-subtitulo {
+  margin: 0 0 26px;
+  color: #175cbd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.editar-perfil-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.editar-perfil-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  color: #16264d;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.editar-perfil-campo small {
+  color: #64748b;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.editar-perfil-form input,
+.editar-perfil-form textarea,
+.editar-perfil-form select {
+  padding: 11px 14px;
+
+  border: 1px solid #d7e0f5;
+  border-radius: 10px;
+  background: #f8fafd;
+
+  font-size: 16px;
+  font-family: inherit;
+  color: #16264d;
+
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.editar-perfil-form input:focus,
+.editar-perfil-form textarea:focus,
+.editar-perfil-form select:focus {
+  outline: none;
+  border-color: #1748dc;
+  background: #ffffff;
+}
+
+.editar-perfil-form input[readonly] {
+  background: #eef1f8;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.editar-perfil-form textarea {
+  resize: vertical;
+}
+
+.editar-perfil-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.editar-perfil-erro {
+  margin: 0;
+  padding: 10px 14px;
+
+  border-radius: 10px;
+  background: #fdecec;
+  color: #b3261e;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.editar-perfil-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.editar-perfil-cancelar,
+.editar-perfil-salvar {
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.editar-perfil-cancelar {
+  border: 1px solid #d7e0f5;
+  background: #ffffff;
+  color: #16264d;
+}
+
+.editar-perfil-cancelar:hover {
+  background: #f4f7ff;
+}
+
+.editar-perfil-salvar {
+  border: none;
+  background: #1748dc;
+  color: #ffffff;
+}
+
+.editar-perfil-salvar:hover {
+  background: #0f3cc4;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+  .editar-perfil-card {
+    padding: 26px 22px 30px;
+  }
+
+  .editar-perfil-linha {
+    grid-template-columns: 1fr;
+  }
+}

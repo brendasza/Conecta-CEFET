@@ -1,0 +1,78 @@
+.tags-input-campo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+
+  border: 1px solid #d7e0f5;
+  border-radius: 10px;
+  background: #f8fafd;
+}
+
+.tags-input-campo:focus-within {
+  border-color: #1748dc;
+  background: #ffffff;
+}
+
+.tags-input-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px 4px 12px;
+
+  border-radius: 999px;
+  background: #eaf1ff;
+  color: #1748dc;
+
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.tags-input-tag button {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  color: #1748dc;
+
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tags-input-tag button:hover {
+  background: #d4e2ff;
+}
+
+.tags-input .tags-input-campo input {
+  flex: 1;
+  min-width: 140px;
+  padding: 5px 4px;
+
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+}
+
+.tags-input-ajuda {
+  display: block;
+  margin-top: 6px;
+  color: #175cbd;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.tags-input-ajuda.pendente {
+  color: #b3261e;
+}
+
+.tags-input .tags-input-campo input {
+  color: #102a52;
+}

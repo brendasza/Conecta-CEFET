@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+Backend/uploads/*
+Backend/storage/certificados/*
+!Backend/uploads/.gitkeep
+!Backend/storage/certificados/.gitkeep

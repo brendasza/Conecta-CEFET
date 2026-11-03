@@ -1,0 +1,1384 @@
+.perfil-page {
+  --perfil-navy: #172033;
+  --perfil-blue: #5170ff;
+  --perfil-blue-deep: #3d5ce8;
+  --perfil-blue-light: #eef2ff;
+  --perfil-slate: #64748b;
+  --perfil-border: #e5e9f2;
+  --perfil-amber: #a56b08;
+  --perfil-amber-light: #fff5df;
+  --perfil-green: #087f4f;
+  --perfil-green-light: #e9f8f0;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(81, 112, 255, 0.18),
+      transparent 32%
+    ),
+    linear-gradient(180deg, #f4f7ff 0%, #f8faff 48%, #f5f7fb 100%);
+
+  padding: 32px 32px 70px;
+
+  font-family:
+    "Segoe UI",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Arial,
+    sans-serif;
+
+  color: var(--perfil-navy);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.perfil-container {
+  max-width: 1240px;
+  margin: 0 auto;
+
+  animation: perfilFadeIn 0.45s ease both;
+}
+
+@keyframes perfilFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.perfil-header-card {
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(226, 231, 241, 0.95);
+  border-radius: 26px;
+
+  padding: 38px 40px 34px;
+
+  box-shadow:
+    0 2px 4px rgba(15, 23, 42, 0.03),
+    0 18px 45px rgba(30, 50, 100, 0.08);
+
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.perfil-header-card:hover {
+  border-color: #dce3f0;
+
+  box-shadow:
+    0 3px 7px rgba(15, 23, 42, 0.04),
+    0 24px 55px rgba(30, 50, 100, 0.1);
+}
+
+
+/* faixa superior */
+
+.perfil-header-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0 0 auto 0;
+
+  height: 118px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #e6ecff 0%,
+      #f2f5ff 55%,
+      #ffffff 100%
+    );
+
+  opacity: 1;
+}
+
+
+/* padrão pontilhado */
+
+.perfil-header-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0 0 auto 0;
+
+  height: 118px;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(81, 112, 255, 0.13) 1.4px,
+      transparent 1.4px
+    );
+
+  background-size: 18px 18px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black 0%,
+      rgba(0, 0, 0, 0.65) 45%,
+      transparent 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* funcionário */
+
+.perfil-header-card:has(.criar-projeto-button)::before {
+  background:
+    linear-gradient(
+      120deg,
+      #fff0cf 0%,
+      #fff7e8 55%,
+      #ffffff 100%
+    );
+}
+
+.perfil-header-card:has(.criar-projeto-button)::after {
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(165, 107, 8, 0.13) 1.4px,
+      transparent 1.4px
+    );
+}
+
+
+/* =========================================================
+   TOPO DO PERFIL
+   ========================================================= */
+
+.perfil-header-top {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 26px;
+
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.perfil-avatar {
+  width: 116px;
+  height: 116px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+
+  position: relative;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6d89ff,
+      var(--perfil-blue)
+    );
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 31px;
+  font-weight: 800;
+
+  letter-spacing: 0.02em;
+
+  border: 5px solid #ffffff;
+
+  box-shadow:
+    0 12px 28px rgba(81, 112, 255, 0.25),
+    0 0 0 4px rgba(81, 112, 255, 0.1);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.perfil-avatar:hover {
+  transform: translateY(-3px) scale(1.025);
+
+  box-shadow:
+    0 17px 32px rgba(81, 112, 255, 0.3),
+    0 0 0 5px rgba(81, 112, 255, 0.13);
+}
+
+
+/* avatar funcionário */
+
+.perfil-header-card:has(.criar-projeto-button) .perfil-avatar {
+  background:
+    linear-gradient(
+      145deg,
+      #dcb65e,
+      var(--perfil-amber)
+    );
+
+  box-shadow:
+    0 12px 28px rgba(165, 107, 8, 0.22),
+    0 0 0 4px rgba(165, 107, 8, 0.1);
+}
+
+.perfil-header-card:has(.criar-projeto-button) .perfil-avatar:hover {
+  box-shadow:
+    0 17px 32px rgba(165, 107, 8, 0.28),
+    0 0 0 5px rgba(165, 107, 8, 0.13);
+}
+
+
+/* =========================================================
+   INFORMAÇÕES PRINCIPAIS
+   ========================================================= */
+
+.perfil-main-info {
+  flex: 1;
+  min-width: 0;
+
+  padding-bottom: 5px;
+}
+
+.perfil-main-info h1 {
+  margin: 0;
+
+  color: var(--perfil-navy);
+
+  font-size: 30px;
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* cargo */
+
+.perfil-role {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 10px;
+
+  padding: 6px 13px;
+
+  border-radius: 999px;
+
+  background: var(--perfil-blue-light);
+  color: var(--perfil-blue);
+
+  font-size: 14.5px;
+  font-weight: 700;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(81, 112, 255, 0.1);
+}
+
+.perfil-role::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+
+  background: currentColor;
+}
+
+
+/* funcionário */
+
+.perfil-header-card:has(.criar-projeto-button) .perfil-role {
+  background: var(--perfil-amber-light);
+  color: var(--perfil-amber);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(165, 107, 8, 0.1);
+}
+
+
+/* =========================================================
+   INFORMAÇÕES ACADÊMICAS
+   ========================================================= */
+
+.perfil-academic-info {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+.perfil-academic-info span {
+  padding: 7px 13px;
+
+  border: 1px solid #e4e8f0;
+  border-radius: 10px;
+
+  background: #fafbfe;
+
+  color: #596a82;
+
+  font-size: 14.5px;
+  line-height: 1.3;
+
+  font-weight: 500;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.perfil-academic-info span:hover {
+  background: #f2f5fb;
+  border-color: #d7dfed;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   AÇÕES
+   ========================================================= */
+
+.perfil-header-actions {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  padding-bottom: 5px;
+}
+
+
+/* botão editar */
+
+.editar-perfil-button {
+  height: 46px;
+
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #dfe4ed;
+  border-radius: 13px;
+
+  background: #ffffff;
+  color: var(--perfil-navy);
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.editar-perfil-button:hover {
+  background: #f7f9fd;
+  border-color: #cfd8e7;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(30, 50, 100, 0.08);
+}
+
+.editar-perfil-button:active {
+  transform: translateY(0);
+}
+
+
+/* botão criar projeto */
+
+.criar-projeto-button {
+  height: 46px;
+
+  padding: 0 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6280ff,
+      var(--perfil-blue) 60%,
+      #3f5de4
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 9px 20px rgba(81, 112, 255, 0.25);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.criar-projeto-button:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(0.97);
+
+  box-shadow:
+    0 13px 25px rgba(81, 112, 255, 0.32);
+}
+
+.criar-projeto-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   BIO
+   ========================================================= */
+
+.perfil-bio {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 28px;
+
+  padding: 20px 23px;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8faff,
+      #f3f6fc
+    );
+
+  border: 1px solid #e8edf5;
+  border-left: 4px solid var(--perfil-blue);
+}
+
+.perfil-header-card:has(.criar-projeto-button) .perfil-bio {
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf1,
+      #fff6e7
+    );
+
+  border-color: #f2e9d7;
+  border-left-color: var(--perfil-amber);
+}
+
+.perfil-bio h3 {
+  margin: 0 0 7px;
+
+  color: var(--perfil-navy);
+
+  font-size: 16px;
+  font-weight: 750;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.perfil-bio p {
+  max-width: 850px;
+
+  margin: 0;
+
+  color: #66758b;
+
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   ESTATÍSTICAS
+   ========================================================= */
+
+.perfil-stats {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 24px;
+}
+
+.perfil-stat {
+  min-width: 175px;
+
+  padding: 18px 22px;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--perfil-border);
+
+  text-decoration: none;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.perfil-stat:hover {
+  border-color: #cdd8f1;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 28px rgba(30, 50, 100, 0.09);
+}
+
+.perfil-stat strong {
+  display: block;
+
+  color: var(--perfil-blue);
+
+  font-size: 26px;
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+.perfil-header-card:has(.criar-projeto-button) .perfil-stat strong {
+  color: var(--perfil-amber);
+}
+
+.perfil-stat span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #718096;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.perfil-stat-static {
+  cursor: default;
+
+  background: #fafbfc;
+}
+
+.perfil-stat-static:hover {
+  border-color: var(--perfil-border);
+
+  transform: none;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+}
+
+
+/* =========================================================
+   SEÇÕES
+   ========================================================= */
+
+.perfil-section {
+  margin-top: 50px;
+
+  animation: perfilFadeIn 0.5s ease both;
+}
+
+.section-title-row {
+  margin-bottom: 23px;
+
+  padding-left: 15px;
+
+  border-left: 4px solid #dbe4ff;
+}
+
+.section-title-row h2 {
+  margin: 0;
+
+  color: var(--perfil-navy);
+
+  font-size: 23px;
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+.section-title-row p {
+  margin: 6px 0 0;
+
+  color: #738198;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PROJETOS
+   ========================================================= */
+
+.perfil-projects {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.perfil-project-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid var(--perfil-border);
+  border-radius: 18px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.perfil-project-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #d3dcef;
+
+  box-shadow:
+    0 20px 38px rgba(30, 50, 100, 0.1);
+}
+
+.project-card-top {
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.project-candidaturas-badge {
+  display: inline-block;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: var(--perfil-amber-light);
+  color: var(--perfil-amber);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.project-type {
+  display: inline-block;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: var(--perfil-blue-light);
+  color: var(--perfil-blue);
+
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.perfil-project-card h3 {
+  margin: 0;
+
+  color: var(--perfil-navy);
+
+  font-size: 19.5px;
+  font-weight: 750;
+
+  line-height: 1.35;
+
+  letter-spacing: -0.01em;
+}
+
+.perfil-project-card p {
+  flex: 1;
+
+  min-height: 68px;
+
+  margin: 12px 0 17px;
+
+  color: #6d7b90;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-notificacoes-info {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin: 0 0 16px;
+
+  padding-top: 12px;
+
+  border-top: 1px dashed #e1e6ef;
+
+  color: #8996a9;
+
+  font-size: 14.5px;
+}
+
+.project-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.project-area {
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: #f2f4f7;
+  color: #617086;
+
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.ver-projeto-button {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: var(--perfil-blue);
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    gap 0.18s ease,
+    color 0.18s ease;
+}
+
+.ver-projeto-button:hover {
+  color: var(--perfil-blue-deep);
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   LINHA DO TEMPO
+   ========================================================= */
+
+.timeline {
+  position: relative;
+
+  padding-left: 38px;
+}
+
+.timeline::before {
+  content: "";
+
+  position: absolute;
+
+  left: 9px;
+
+  top: 5px;
+  bottom: 5px;
+
+  width: 2px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #d7e1ff,
+      #e7ebf3
+    );
+}
+
+.timeline-item {
+  position: relative;
+
+  display: flex;
+
+  margin-bottom: 24px;
+}
+
+.timeline-marker {
+  position: absolute;
+
+  left: -38px;
+  top: 6px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6d89ff,
+      var(--perfil-blue)
+    );
+
+  box-shadow:
+    0 0 0 4px #eef2ff,
+    0 5px 12px rgba(81, 112, 255, 0.22);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+}
+
+.timeline-marker span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+
+  background: #ffffff;
+}
+
+.timeline-content {
+  width: 100%;
+}
+
+.timeline-date {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 8px;
+
+  color: var(--perfil-blue);
+
+  font-size: 14.5px;
+  font-weight: 750;
+}
+
+.timeline-card {
+  background: #ffffff;
+
+  border: 1px solid var(--perfil-border);
+  border-radius: 16px;
+
+  padding: 20px 22px;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.timeline-card:hover {
+  border-color: #d4ddec;
+
+  transform: translateX(4px);
+
+  box-shadow:
+    0 12px 25px rgba(30, 50, 100, 0.08);
+}
+
+.timeline-type {
+  display: inline-block;
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  background: var(--perfil-green-light);
+  color: var(--perfil-green);
+
+  font-size: 13px;
+  font-weight: 750;
+
+  letter-spacing: 0.01em;
+}
+
+.timeline-card h3 {
+  margin: 10px 0 6px;
+
+  color: var(--perfil-navy);
+
+  font-size: 19px;
+  font-weight: 750;
+
+  line-height: 1.35;
+}
+
+.timeline-card p {
+  margin: 0;
+
+  color: #6d7b90;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   INTERESSES
+   ========================================================= */
+
+.interesses-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.interesses-card {
+  background: #ffffff;
+
+  border: 1px solid var(--perfil-border);
+  border-radius: 18px;
+
+  padding: 26px;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.025);
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.interesses-card:hover {
+  border-color: #d5deed;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 17px 32px rgba(30, 50, 100, 0.08);
+}
+
+.interesses-card h2 {
+  margin: 0;
+
+  color: var(--perfil-navy);
+
+  font-size: 20px;
+  font-weight: 750;
+
+  letter-spacing: -0.01em;
+}
+
+.interesses-card > p {
+  margin: 7px 0 19px;
+
+  color: #748197;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.tags-list span {
+  padding: 7px 13px;
+
+  border-radius: 999px;
+
+  background: var(--perfil-blue-light);
+  color: var(--perfil-blue);
+
+  font-size: 14.5px;
+  font-weight: 650;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.tags-list span:hover {
+  background: #dfe7ff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 4px 10px rgba(81, 112, 255, 0.1);
+}
+
+
+/* =========================================================
+   RESPONSIVO — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .perfil-page {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .perfil-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .perfil-header-top {
+    align-items: flex-start;
+  }
+
+  .perfil-header-actions {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVO — CELULAR
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .perfil-page {
+    padding: 22px 16px 55px;
+  }
+
+  .perfil-header-card {
+    padding: 28px 20px 23px;
+
+    border-radius: 21px;
+  }
+
+  .perfil-header-card::before,
+  .perfil-header-card::after {
+    height: 105px;
+  }
+
+  .perfil-header-top {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+  }
+
+  .perfil-avatar {
+    width: 96px;
+    height: 96px;
+
+    font-size: 26px;
+  }
+
+  .perfil-main-info {
+    width: 100%;
+  }
+
+  .perfil-main-info h1 {
+    font-size: 26px;
+  }
+
+  .perfil-academic-info {
+    margin-top: 13px;
+  }
+
+  .perfil-header-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    padding-bottom: 0;
+  }
+
+  .editar-perfil-button,
+  .criar-projeto-button {
+    width: 100%;
+  }
+
+  .perfil-bio {
+    margin-top: 23px;
+
+    padding: 18px 18px;
+  }
+
+  .perfil-bio p {
+    font-size: 15px;
+  }
+
+  .perfil-stats {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .perfil-stat {
+    min-width: 0;
+
+    padding: 15px 16px;
+  }
+
+  .perfil-stat strong {
+    font-size: 23px;
+  }
+
+  .perfil-section {
+    margin-top: 38px;
+  }
+
+  .section-title-row {
+    margin-bottom: 18px;
+  }
+
+  .section-title-row h2 {
+    font-size: 22px;
+  }
+
+  .section-title-row p {
+    font-size: 15px;
+  }
+
+  .perfil-projects {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .perfil-project-card {
+    padding: 20px;
+  }
+
+  .interesses-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .interesses-card {
+    padding: 21px;
+  }
+
+  .timeline {
+    padding-left: 31px;
+  }
+
+  .timeline-marker {
+    left: -31px;
+  }
+
+  .timeline-card {
+    padding: 18px;
+  }
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .perfil-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .perfil-header-card {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .perfil-main-info h1 {
+    font-size: 23px;
+  }
+
+  .perfil-role {
+    font-size: 13.5px;
+  }
+
+  .perfil-academic-info span {
+    font-size: 13.5px;
+  }
+
+  .perfil-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-stat {
+    width: 100%;
+  }
+
+  .project-card-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .project-card-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .ver-projeto-button {
+    margin-top: 3px;
+  }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+.editar-perfil-button:focus-visible,
+.criar-projeto-button:focus-visible,
+.ver-projeto-button:focus-visible,
+.perfil-stat:focus-visible {
+  outline: 3px solid rgba(81, 112, 255, 0.28);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .perfil-container,
+  .perfil-section {
+    animation: none;
+  }
+
+  .perfil-avatar,
+  .perfil-stat,
+  .perfil-project-card,
+  .timeline-card,
+  .interesses-card,
+  .tags-list span,
+  .editar-perfil-button,
+  .criar-projeto-button {
+    transition: none;
+  }
+}
+a.criar-projeto-button,
+a.ver-projeto-button {
+  text-decoration: none;
+}
+.editar-perfil-button {
+  text-decoration: none;
+}

@@ -1,0 +1,269 @@
+.cadastro-page {
+  min-height: 100vh;
+  width: 100%;
+
+  background: #a0c0ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+}
+
+.cadastro-card {
+  width: 100%;
+  max-width: 1000px;
+
+  background: #003986;
+
+  border-radius: 24px;
+
+  padding: 42px 48px;
+
+  box-shadow: 0 8px 30px rgba(25, 52, 90, 0.1);
+}
+
+
+.cadastro-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.login-logo {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+
+.cadastro-header {
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.cadastro-header h1 {
+  margin: 0;
+
+  color: #fefefe;
+
+  font-size: 30px;
+}
+
+.cadastro-header p {
+  margin: 9px 0 0;
+
+  color: #b5d4ff;
+
+  font-size: 17px;
+}
+
+/* FORMULÁRIO */
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.cadastro-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  flex: 1;
+}
+
+.cadastro-field label {
+  color: #f6faff;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.cadastro-field input,
+.cadastro-field select {
+  width: 100%;
+  height: 50px;
+
+  border: 1px solid #d8dfeb;
+
+  border-radius: 11px;
+
+  padding: 0 14px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #102a52;
+
+  font-size: 16px;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cadastro-field input::placeholder {
+  color: #6b7a90;
+}
+
+.cadastro-field input:focus,
+.cadastro-field select:focus {
+  border-color: #7f9cf3;
+
+  box-shadow: 0 0 0 3px rgba(23, 72, 220, 0.1);
+}
+
+.cadastro-field select {
+  cursor: pointer;
+}
+
+/* DUAS COLUNAS */
+
+.cadastro-row {
+  display: flex;
+
+  gap: 16px;
+}
+
+/* SUBSEÇÃO (dados acadêmicos / profissionais) */
+
+.cadastro-subsection {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  padding: 18px 18px 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cadastro-subsection-title {
+  margin: 0;
+
+  color: #b5d4ff;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cadastro-subsection .cadastro-row {
+  margin-top: -4px;
+}
+
+/* MENSAGEM DE ERRO */
+
+.cadastro-erro {
+  margin: -6px 0 0;
+
+  padding: 10px 14px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 90, 90, 0.15);
+  border: 1px solid rgba(255, 90, 90, 0.4);
+
+  color: #ffd3d3;
+
+  font-size: 15px;
+}
+
+/* BOTÃO */
+
+.cadastro-button {
+  width: 100%;
+  height: 54px;
+
+  margin-top: 7px;
+
+  border-radius: 27px;
+
+  background: #1748dc;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cadastro-button:hover {
+  background: #103bc0;
+}
+
+.cadastro-button:active {
+  transform: scale(0.99);
+}
+
+/* LOGIN */
+
+.cadastro-login {
+  margin-top: 25px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 15px;
+
+  color: #b2ccf0;
+}
+
+.cadastro-login button {
+  background: transparent;
+
+  color: #f3f6ff;
+
+  font-weight: 600;
+
+  padding: 0;
+}
+
+.cadastro-login button:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 600px) {
+  .cadastro-page {
+    padding: 20px 15px;
+  }
+
+  .cadastro-card {
+    padding: 35px 25px;
+
+    border-radius: 20px;
+  }
+
+  .cadastro-header h1 {
+    font-size: 26px;
+  }
+
+  .cadastro-row {
+    flex-direction: column;
+
+    gap: 18px;
+  }
+}
