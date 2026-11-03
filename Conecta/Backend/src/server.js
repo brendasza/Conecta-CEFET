@@ -21,10 +21,10 @@ app.disable("x-powered-by");
 app.use(cors({ origin: (process.env.CORS_ORIGIN || "http://localhost:5173").split(",") }));
 app.use(express.json({ limit: "1mb" }));
 
-// fotos e vídeos das publicações
+// fotos e vídeo
 app.use("/uploads", express.static(PASTA_UPLOADS, { setHeaders: (res) => res.set("Cross-Origin-Resource-Policy", "cross-origin") }));
 
-// RNF004: auditoria automática das ações que alteram dados
+// RNF004
 app.use("/api", auditoria);
 
 app.use("/api", authRoutes);
