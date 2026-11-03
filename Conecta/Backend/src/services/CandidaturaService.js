@@ -34,7 +34,6 @@ async function exigirCoordenador(idProjeto, idUsuario) {
   }
 }
 
-// RF024–RF026 / RN007: nunca aprovar além do limite de vagas
 async function garantirVaga(projeto, conexao) {
   if (projeto.vagas_totais == null) return;
   const aprovados = await ProjetoRepository.contarAprovados(projeto.id_atividade, conexao);
@@ -43,7 +42,6 @@ async function garantirVaga(projeto, conexao) {
   }
 }
 
-/* ---------- aluno ---------- */
 
 export async function candidatar(idAluno, idProjeto, carta) {
   const cartaLimpa = texto(carta, 3000, "texto da carta de apresentação");
@@ -116,7 +114,6 @@ export async function historico(idAluno) {
   };
 }
 
-/* ---------- professor ---------- */
 
 export async function listarDoProjeto(idProjeto, idUsuario) {
   await exigirCoordenador(idProjeto, idUsuario);
@@ -160,7 +157,6 @@ export async function decidir(idCandidatura, idUsuario, { status, justificativa 
     projeto = await ProjetoRepository.buscarBruto(candidatura.id_atividade, conexao, true);
     if (!projeto || projeto.status === "cancelado") throw naoEncontrado("Projeto não encontrado");
 
-    // RN008: só o professor responsável decide (nem o administrador)
     if (!(await ProjetoRepository.ehCoordenador(projeto.id_atividade, idUsuario, conexao))) {
       throw proibido("Apenas os coordenadores do projeto podem avaliar candidaturas");
     }
@@ -195,7 +191,6 @@ export async function decidir(idCandidatura, idUsuario, { status, justificativa 
   return { id: String(idCandidatura), status };
 }
 
-/* ---------- integrantes adicionados direto pelo professor ---------- */
 
 export async function adicionarIntegrante(idProjeto, idUsuario, idAluno) {
   await exigirCoordenador(idProjeto, idUsuario);
