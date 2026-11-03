@@ -1,8 +1,6 @@
 import pool from "../config/database.js";
 import { likeSeguro } from "../utils/texto.js";
 
-// Busca universal: atividades acadêmicas, professores e outros usuários.
-// Devolve só dados públicos (nunca matrícula, SIAPE, CPF ou senha).
 export async function buscar(termo, limite = 6) {
   const q = String(termo ?? "").trim();
   if (q.length < 2) return { atividades: [], professores: [], usuarios: [] };
